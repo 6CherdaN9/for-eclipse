@@ -65,49 +65,49 @@ int main(int argc, char *argv[])
         if (c == '+')
         {
             printf("Answer:\n");
-            printf("%f",a+b);
+            printf("%.2f",a+b);
         }
         else
         {
             if (c == '-')
             {
                 printf("Answer:\n");
-                printf("%f",a-b);
+                printf("%.2f",a-b);
             }
             else
             {
                 if (c == '^')
                 {
                     printf("Answer:\n");
-                    printf("%f", power(a,b));
+                    printf("%.2f", power(a,b));
                 }
                 else
                 {
                     if (c == '/')
                     {
                         printf("Answer:\n");
-                        printf("%f",a/b);
+                        printf("%.2f",a/b);
                     }
                     else
                     {
                         if (c == '*')
                         {
                             printf("Answer:\n");
-                            printf("%f",a*b);
+                            printf("%.2f",a*b);
                         }
                         else
                         {
                             if (c == '!')
                             {
                                 printf("Answer:\n");
-                                printf("%f",factorial(a));
+                                printf("%.2f",factorial(a));
                             }
                         }
                     }
                 }
             }
         }
-        printf("Do you want to continue? (0 - NO, 1 - YES)\n"); //порторение цикла работы калькулятора
+        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //порторение цикла работы калькулятора
         scanf("%i",&m);
     }
     return EXIT_SUCCESS;
