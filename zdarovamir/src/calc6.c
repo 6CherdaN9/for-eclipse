@@ -43,7 +43,7 @@ float power(float x, float y)  //функция для вычисления ст
     return(res);
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) // тело программы
     {
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
@@ -51,56 +51,71 @@ int main(int argc, char *argv[])
     char c;
     int m;
     m = 1;
-    while(m == 1)
+    while(m == 1) // цикл для повторения работы калькудятора
     {
-        printf("First number:\n");
+        printf("First number:\n"); // ввод первого числа
         scanf("%f",&a);
-        printf("Operation(+,-,*,/,^,!):\n");
+        printf("Operation(+,-,*,/,^,!):\n"); // ввод операции
         scanf(" %c",&c);
-        if (c != '!')
+        if (c != '!') // проверка на операцию (если факториал, то вводится только одно число)
         {
-            printf("Second number:\n");
+            printf("Second number:\n"); // ввод второго числа
             scanf("%f",&b);
         }
         if (c == '+')
         {
-            printf("Answer:\n");
+            printf("Answer:\n"); // результат суммы
             printf("%.2f",a+b);
         }
         else
         {
-            if (c == '-')
+            if (c == '-') // результат разности
             {
                 printf("Answer:\n");
                 printf("%.2f",a-b);
             }
             else
             {
-                if (c == '^')
+                if (c == '^') // результат возведения в степень
                 {
                     printf("Answer:\n");
                     printf("%.2f", power(a,b));
                 }
                 else
                 {
-                    if (c == '/')
+                    if (c == '/') // результат деления
                     {
-                        printf("Answer:\n");
-                        printf("%.2f",a/b);
+                        if (b == 0) // проверка второго числа(делителя) на равность нулю
+                        {
+                            printf("This operation is not valid\n");
+                        }
+                        else
+                            {
+                                printf("Answer:\n"); // результат деления
+                                printf("%.2f",a/b);
+                            }
                     }
                     else
                     {
                         if (c == '*')
                         {
-                            printf("Answer:\n");
+                            printf("Answer:\n"); // результат умножения
                             printf("%.2f",a*b);
                         }
                         else
                         {
                             if (c == '!')
                             {
-                                printf("Answer:\n");
-                                printf("%.2f",factorial(a));
+                                if (a < 0) // проверка числа. если меньше нуля, то операция не выполяется
+                                {
+                                    printf("This operation is not valid\n");
+
+                                }
+                                else
+                                    {
+                                        printf("Answer:\n"); // результат вычисления факториала
+                                        printf("%.2f",factorial(a));
+                                    }
                             }
                         }
                     }
