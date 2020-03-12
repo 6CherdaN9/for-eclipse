@@ -4,7 +4,7 @@
  Author      : Vovchik
  Version     : 6
  Copyright   : mya
- Description : калькулятор, включающий в себя 6 арифметических операций
+ Description : калькулятор, включающий в себя 6 арифметических операций над числами и 3 над векторами
  ============================================================================
  */
 
@@ -61,35 +61,35 @@ int main(int argc, char *argv[])
 
         if (type == 2){
             res = 0;
-            printf("Enter the size of the vectors: ");
+            printf("Enter the size of the vectors: "); // ввод колличества координат в векторах
             scanf("%i", &size);
             a = malloc(size*sizeof(int));
             b = malloc(size*sizeof(int));
-        printf("Enter the coordinates of the first vector: ");
+        printf("Enter the coordinates of the first vector: "); // координаты первого вектора
         for (int i=0; i < size; i++) scanf("%f", &a[i]);
-        printf("Enter the coordinates of the second vector: ");
+        printf("Enter the coordinates of the second vector: "); // координаты второго вектора
         for (int i=0; i < size; i++) scanf("%f", &b[i]);
-        printf("Select operation\n");
+        printf("Select operation\n"); // выбор операции
         printf("1. Vector addition\n");
         printf("2. Vector difference\n");
         printf("3. Scalar product of vectors\n");
         scanf("%i", &operation);
         if (operation == 1){
            printf("Answer:\n");
-           for (int i=0; i < size; i++) printf("%.2f ", a[i]+b[i]);
+           for (int i=0; i < size; i++) printf("%.2f ", a[i]+b[i]); // сложение векоров
         }
         else if (operation == 2){
             printf("Answer:\n");
-            for (int i=0; i < size; i++) printf("%.2f ", a[i]-b[i]);
+            for (int i=0; i < size; i++) printf("%.2f ", a[i]-b[i]); // разность векторов
         }
         else if (operation == 3) {
             printf("Answer:\n");
-            for (int i=0; i < size; i++) res = a[i] * b[i] + res;
+            for (int i=0; i < size; i++) res = a[i] * b[i] + res; // вектороное произведение векторов
             printf("%.2f ", res);
         }
         free(a);
         free(b);
-        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n");
+        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //порторение цикла работы калькулятора
         scanf("%i",&repeat);
         }
     else{
