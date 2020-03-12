@@ -43,87 +43,112 @@ float power(float x, float y)  //функция для вычисления ст
     return(res);
 }
 
-int main(int argc, char *argv[]) // тело программы
-    {
+int main(int argc, char *argv[])
+{
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
-    float a,b;
+
+    float *a, *b, res, e, d;
+    int size, repeat, operation, type;
     char c;
-    int m;
-    m = 1;
-    while(m == 1) // цикл для повторения работы калькудятора
-    {
+    repeat = 1;
+    while (repeat == 1)
+        {
+        printf("Variable Type:\n"); // Выбор с чем будет проводится работа
+        printf("1. The numbers\n");
+        printf("2. The vectors\n");
+        scanf("%i", &type);
+
+        if (type == 2){
+            res = 0;
+            printf("Enter the size of the vectors: ");
+            scanf("%i", &size);
+            a = malloc(size*sizeof(int));
+            b = malloc(size*sizeof(int));
+        printf("Enter the coordinates of the first vector: ");
+        for (int i=0; i < size; i++) scanf("%f", &a[i]);
+        printf("Enter the coordinates of the second vector: ");
+        for (int i=0; i < size; i++) scanf("%f", &b[i]);
+        printf("Select operation\n");
+        printf("1. Vector addition\n");
+        printf("2. Vector difference\n");
+        printf("3. Scalar product of vectors\n");
+        scanf("%i", &operation);
+        if (operation == 1){
+           printf("Answer:\n");
+           for (int i=0; i < size; i++) printf("%.2f ", a[i]+b[i]);
+        }
+        else if (operation == 2){
+            printf("Answer:\n");
+            for (int i=0; i < size; i++) printf("%.2f ", a[i]-b[i]);
+        }
+        else if (operation == 3) {
+            printf("Answer:\n");
+            for (int i=0; i < size; i++) res = a[i] * b[i] + res;
+            printf("%.2f ", res);
+        }
+        free(a);
+        free(b);
+        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n");
+        scanf("%i",&repeat);
+        }
+    else{
         printf("First number:\n"); // ввод первого числа
-        scanf("%f",&a);
+        scanf("%f",&e);
         printf("Operation(+,-,*,/,^,!):\n"); // ввод операции
         scanf(" %c",&c);
-        if (c != '!') // проверка на операцию (если факториал, то вводится только одно число)
-        {
+        if (c != '!'){ // проверка на операцию (если факториал, то вводится только одно число)
             printf("Second number:\n"); // ввод второго числа
-            scanf("%f",&b);
+            scanf("%f",&d);
         }
-        if (c == '+')
-        {
+        if (c == '+'){
             printf("Answer:\n"); // результат суммы
-            printf("%.2f",a+b);
+            printf("%.2f",e+d);
         }
-        else
-        {
-            if (c == '-') // результат разности
-            {
-                printf("Answer:\n");
-                printf("%.2f",a-b);
-            }
-            else
-            {
-                if (c == '^') // результат возведения в степень
-                {
-                    printf("Answer:\n");
-                    printf("%.2f", power(a,b));
-                }
-                else
-                {
-                    if (c == '/') // результат деления
-                    {
-                        if (b == 0) // проверка второго числа(делителя) на равность нулю
-                        {
-                            printf("This operation is not valid\n");
-                        }
-                        else
-                            {
-                                printf("Answer:\n"); // результат деления
-                                printf("%.2f",a/b);
-                            }
+            else{
+                    if (c == '-'){ // результат разности
+                        printf("Answer:\n");
+                        printf("%.2f",e-d);
                     }
-                    else
-                    {
-                        if (c == '*')
-                        {
-                            printf("Answer:\n"); // результат умножения
-                            printf("%.2f",a*b);
+                    else{
+                        if (c == '^'){ // результат возведения в степень
+                            printf("Answer:\n");
+                            printf("%.2f", power(e,d));
                         }
-                        else
-                        {
-                            if (c == '!')
-                            {
-                                if (a < 0) // проверка числа. если меньше нуля, то операция не выполяется
-                                {
+                        else{
+                            if (c == '/'){
+                                if (d == 0){
                                     printf("This operation is not valid\n");
-
                                 }
-                                else
-                                    {
-                                        printf("Answer:\n"); // результат вычисления факториала
-                                        printf("%.2f",factorial(a));
+                                else{
+                                        printf("Answer:\n"); // результат деления
+                                        printf("%.2f",e/d);
                                     }
                             }
+                            else{
+                                if (c == '*'){
+                                    printf("Answer:\n"); // результат умножения
+                                    printf("%.2f",e*d);
+                                }
+                                else{
+                                    if (c == '!'){
+                                        if (e < 0){ // проверка числа. если меньше нуля, то операция не выполяется
+                                            printf("This operation is not valid\n");
+
+                                        }
+                                        else{
+                                                printf("Answer:\n"); // результат вычисления факториала
+                                                printf("%.2f",factorial(e));
+                                            }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
+                printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //порторение цикла работы калькулятора
+                scanf("%i",&operation);
             }
         }
-        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //порторение цикла работы калькулятора
-        scanf("%i",&m);
-    }
     return EXIT_SUCCESS;
 }
