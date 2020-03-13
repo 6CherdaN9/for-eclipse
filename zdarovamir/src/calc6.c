@@ -2,7 +2,7 @@
  ============================================================================
  Name        : calc
  Author      : Vovchik
- Version     : 6
+ Version     : номер весрии потерялся во времени
  Copyright   : mya
  Description : калькулятор, включающий в себя 6 арифметических операций над числами и 3 над векторами
  ============================================================================
@@ -84,12 +84,12 @@ int main(int argc, char *argv[])
         }
         else if (operation == 3) {
             printf("Answer:\n");
-            for (int i=0; i < size; i++) res = a[i] * b[i] + res; // вектороное произведение векторов
+            for (int i=0; i < size; i++) res = a[i] * b[i] + res; // скалярное произведение векторов
             printf("%.2f ", res);
         }
         free(a);
         free(b);
-        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //порторение цикла работы калькулятора
+        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //повторение цикла работы калькулятора
         scanf("%i",&repeat);
         }
     else{
@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
                         }
                     }
                 }
-                printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //порторение цикла работы калькулятора
+                printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //повторение цикла работы калькулятора
                 scanf("%i",&operation);
             }
         }
