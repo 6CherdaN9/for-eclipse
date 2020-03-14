@@ -147,7 +147,7 @@ int main(int argc, char *argv[])
                     }
                 }
                 printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //повторение цикла работы калькулятора
-                scanf("%i",&operation);
+                scanf("%i",&repeat);
             }
         }
     return EXIT_SUCCESS;
